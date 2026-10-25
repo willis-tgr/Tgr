@@ -277,53 +277,43 @@ body {
 }
 
 /* ── Willist 워드마크: Willist. → Wt. → Willist. 반복 ── */
-.willist-wordmark g {
+.willist-wordmark {
   fill: var(--willist);
-  transform-box: fill-box;
 }
 
-.willist-wordmark .wm-mid {
-  transform-origin: left bottom;
-  /* 글자마다 조금씩 늦게 따라와 접히고 펼쳐지는 결이 생긴다 */
-  animation: wm-fold 6s cubic-bezier(0.45, 0, 0.2, 1) infinite both;
-  animation-delay: calc(var(--k) * 60ms);
+/* 보이는 영역의 오른쪽 끝과 't.'가 같은 박자로 움직인다 */
+.willist-wordmark .wm-reveal {
+  animation: wm-reveal 6s cubic-bezier(0.65, 0, 0.25, 1) infinite;
 }
 
 .willist-wordmark .wm-tail {
-  animation: wm-slide 6s cubic-bezier(0.45, 0, 0.2, 1) infinite both;
+  animation: wm-tail 6s cubic-bezier(0.65, 0, 0.25, 1) infinite;
 }
 
-@keyframes wm-fold {
+@keyframes wm-reveal {
   0%,
-  30% {
-    opacity: 1;
-    transform: none;
-  }
-  42%,
-  72% {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  86%,
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* t와 마침표가 W 바로 옆(원래 Wt. 로고 자리)까지 당겨졌다 돌아간다 */
-@keyframes wm-slide {
-  0%,
-  30% {
-    transform: none;
-  }
-  44%,
-  72% {
-    transform: translateX(-118px);
-  }
+  30%,
   90%,
   100% {
     transform: none;
+  }
+  48%,
+  72% {
+    transform: translateX(-136px);
+  }
+}
+
+/* 't.'는 W 바로 옆(원래 Wt. 로고 자리)까지 당겨졌다 돌아간다 */
+@keyframes wm-tail {
+  0%,
+  30%,
+  90%,
+  100% {
+    transform: none;
+  }
+  48%,
+  72% {
+    transform: translateX(-118px);
   }
 }
 
