@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tgr 회사 홈페이지 (willis-tgr.com)
 
-## Getting Started
-
-First, run the development server:
+Tgr과 상품(Willist, Ing)을 소개하는 한 페이지 사이트. Next.js 정적 내보내기(`output: "export"`) → `out/` 폴더를 Cloudflare Pages에 올린다.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+nvm use 24
+pnpm install
+pnpm dev     # http://localhost:3000
+pnpm build   # out/ 생성
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 내용: `src/app/page.tsx` (회사 소개 · 상품 · 연락처), 색·폰트: `src/app/globals.css`, 메타데이터: `src/app/layout.tsx`
+- 회사 로고·마스코트: `public/brand/tgr-wordmark.webp`, `tgr-tiger.webp` (원본 PNG에서 흰 배경을 지우고, 어두운 배경용으로 로고의 검은 글자를 아이보리로 바꾼 것)
+- 상품 로고: `public/brand/` (Willist: new_willist `apps/web/public/wtLogo.svg`, Ing: Ing `apps/web/public/brand/ing-logo-dark-animated.svg`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 배포 (Cloudflare Pages)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. `npx wrangler login` (브라우저에서 Cloudflare 로그인)
+2. `pnpm build && npx wrangler pages deploy out --project-name tgr`
+3. Cloudflare 대시보드 → Workers & Pages → tgr → 사용자 지정 도메인 → `willis-tgr.com`, `www.willis-tgr.com` 추가
 
-## Learn More
+## 연락 메일 (contact@willis-tgr.com)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cloudflare 대시보드 → willis-tgr.com → 이메일 → 이메일 라우팅 → `contact` 주소를 받을 메일함(예: Gmail)으로 전달.

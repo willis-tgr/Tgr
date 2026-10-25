@@ -1,0 +1,27 @@
+.walking-tiger {
+  position: absolute;
+  top: 32.744%;
+  left: 26.744%;
+  z-index: 10;
+  width: 46.512%;
+  filter: drop-shadow(0 0 40px rgb(242 154 58 / 0.35)) drop-shadow(0 20px 30px rgb(0 0 0 / 0.5));
+}
+
+.walking-tiger-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+/* The SVG carries its own walk cycle: frames aligned on the head and
+   cross-faded, so the sprite no longer jumps between poses. Offsets keep
+   the tiger where the first frame of the old sprite sheet sat. */
+.walking-tiger-frames {
+  position: absolute;
+  top: -1.105%;
+  left: 1.105%;
+  display: block;
+  width: 99.448%;
+  max-width: none;
+  height: auto;
+}
